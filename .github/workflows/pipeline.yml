@@ -6,7 +6,7 @@ name: Pipeline
 on:
   # Triggers the workflow if Manual workflow gets completed
   workflow_run:
-    workflows: ["Manual workflow"]
+    workflows: ["Manual workflow", "Labeler"]
     types:
       - completed
 
