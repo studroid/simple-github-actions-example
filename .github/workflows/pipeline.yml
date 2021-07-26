@@ -29,5 +29,8 @@ jobs:
       - name: Show branch ref
         run: echo "${{toJson(github.ref)}}"
         
+      - name: Show head branch ref
+        run: echo "${{toJson(github.event.workflow_run.head_branch)}}"
+        
       - name: Show github context
         run: echo "${{toJson(github)}}"
