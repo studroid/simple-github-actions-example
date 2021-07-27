@@ -33,4 +33,12 @@ jobs:
         run: echo "${{toJson(github.event.workflow_run.head_branch)}}"
         
       - name: Show github context
-        run: echo "${{toJson(github)}}"
+        run: echo "${{toJson(github)}}
+        
+  second-pipeline:
+    needs: pipeline
+    runs-on: ubuntu-latest
+    
+    steps: 
+    - name: Test needs
+      run: echo "Only executed if the previous job succeeds"
