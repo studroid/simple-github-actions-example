@@ -6,6 +6,9 @@ on:
       pullRequestNumber:
         description: Pull request number to auto-approve
         required: true
+      reason:
+        description: Reason for auto-approval
+        required: false
 
 jobs:
   auto-approve:
@@ -28,6 +31,7 @@ jobs:
             "pull_request_title": "${{ github.event.pull_request.title }}",
             "pull_request_url": "${{ github.event.pull_request.html_url }}",
             "pull_request_statuses_url": "${{ github.event.pull_request.statues_url }}"
+            "reason": "${{ github.event.inputs.reason }}"
           }
       env:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
