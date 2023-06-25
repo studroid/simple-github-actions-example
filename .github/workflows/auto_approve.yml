@@ -22,6 +22,12 @@ jobs:
         pull-request-number: ${{ github.event.inputs.pullRequestNumber }}
         review-message: "Auto approved"
 
+    - name: Add a label
+      uses: studroid/label-pr-or-issue-action@v1
+      with:
+        pr-or-issue-number: ${{ github.event.inputs.pullRequestNumber }}
+        label: "auto-approved"
+
     - name: Send Slack Message
       id: slack
       uses: slackapi/slack-github-action@v1.24.0
