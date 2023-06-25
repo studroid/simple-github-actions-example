@@ -29,20 +29,14 @@ jobs:
         pr-or-issue-number: ${{ github.event.inputs.pullRequestNumber }}
         label: "auto-approved"
 
-    - name: Check an action output
-      run: |
-        echo "The output is ${{ steps.add_a_label.outputs.pr_or_issue_title }}"
-        echo "The env is ${{ env.pr_or_issue_title }}"
-
     - name: Send Slack Message
       id: slack
       uses: slackapi/slack-github-action@v1.24.0
       with:
         payload: |
           {
-            "pull_request_title": "${{ github.event.pull_request.title }}",
-            "pull_request_url": "${{ github.event.pull_request.html_url }}",
-            "pull_request_statuses_url": "${{ github.event.pull_request.statues_url }}"
+            "pull_request_title": "${{ steps.add_a_label.outputs.pr_or_issue_title }}",
+            "pull_request_url": "${{ steps.add_a_label.outputs.pr_or_issue_url }}",
             "reason": "${{ github.event.inputs.reason }}"
           }
       env:
