@@ -23,10 +23,16 @@ jobs:
         review-message: "Auto approved"
 
     - name: Add a label
+      id: add_a_label
       uses: studroid/label-pr-or-issue-action@v1
       with:
         pr-or-issue-number: ${{ github.event.inputs.pullRequestNumber }}
         label: "auto-approved"
+
+    - name: Check an action output
+      run: |
+        echo "The output is ${{ steps.add_a_label.outputs.pr_or_issue_title }}"
+        echo "The env is ${{ env.pr_or_issue_title }}"
 
     - name: Send Slack Message
       id: slack
