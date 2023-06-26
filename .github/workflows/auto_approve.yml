@@ -15,6 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
+      issues: write
     steps:
     - name: Auto Approve
       uses: hmarr/auto-approve-action@v3
