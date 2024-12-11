@@ -1,4 +1,4 @@
-name: Auto approve
+name: Print branch name
 
 on:
   workflow_dispatch:
